@@ -26,7 +26,7 @@ function solution(lottos, win_nums) {
                 }
             }
     }}
-    //당첨된 최소 개수에 0의 개수를 더해 최대 등수를 구함.
+    //당첨된 최소 개수에 0의 개수를 빼서 최대 등수를 구함.
     //1개와 2개 당첨 모두 6등으로 처리되게 함.
     let winMax = winMin - zeroNum;
       if(winMax === 7){

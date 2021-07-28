@@ -1,30 +1,35 @@
 function solution(numbers, target) {
-    let sortNum = numbers.sort();
-    let addAll = sortNum.reduce((a,b)=>a+b)
-    let zeroIndex = [];
-
-
-    let znum =[];
-    //바깥에서 선언하지 않으면 for문을 돌때마다 다시 target숫자가 됨
-    let ztar = target+numbers[numbers.length-1];
-    for(let i=0;i<leftnum.length;i++){    
-              //return값이 0이 될때까지 numbers에서 한개씩 뺌
-        if(!(ztar===0)){
-            ztar = ztar-leftnum[i]
-          //return이 0이 되면 남은 숫자들을 znum 배열에 추가
-        }else if(ztar === 0){
-            znum.push(leftnum[i]);
+  const A = Array(2 ** numbers.length)
+    .fill()
+    .map((v, i) => 0);
+  function allArr(num, K) {
+    for (let i = 1; i <= 2 ** K; i++) {
+      for (let p = 1; p < A.length + 1; p++) {
+        if (
+          // i % 2 === 1 &&
+          //k+1을 하면 안됨
+          p >= 1 + (A.length / 2 ** K) * (i - 1) &&
+          p < 1 + (A.length / 2 ** K) * (i - 1) + A.length / 2 ** (K + 1)
+        ) {
+          A[p - 1] = A[p - 1] + num[K];
+        } else if (
+          p >= 1 + (A.length / 2 ** K) * (i - 1) + A.length / 2 ** (K + 1) &&
+          p < 1 + (A.length / 2 ** K) * (i - 1) + 2 * (A.length / 2 ** (K + 1))
+        ) {
+          A[p - 1] = A[p - 1] - num[K];
+          
         }
+      }
     }
-    //numbers항목이 다 넘어갔다면 경우의 수는 하나임.(0=0이므로)
-    if(znum.length === 0){
-        return 1;
-    }else{
-        
+  }
+  for (let j = 0; j < numbers.length; j++) {
+    allArr(numbers, j);
+  }
+  let answer = 0;
+  for (let e = 0; e < A.length; e++) {
+    if (A[e] === target) {
+      answer += 1;
     }
-    
-    
- 
-    // var answer = 0;
-    // return answer;
+  }
+  return answer;
 }

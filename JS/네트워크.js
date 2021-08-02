@@ -9,7 +9,7 @@ function solution(n, computers) {
   network(0, 0);
   let thisNum = 0;
   let thisTarget = 0;
-  console.log(leftNum);
+  console.log(num);
   let example = 4;
   while (example < 0) {
     for (let i = thisNum; i < n; i++) {

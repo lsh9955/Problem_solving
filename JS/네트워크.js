@@ -1,53 +1,80 @@
 function solution(n, computers) {
-  let leftNum = Array(n)
+  let comArr = Array(n)
     .fill()
     .map((v, i) => i);
-  let connectArr = [[]];
-  let diffNet = 0;
-  for (let x = 1; x < n; x++) {
-    for (let j = 0; j < x; j++) {
-      if (computers[x][j] === 1 && computers[j][x] === 0) {
-        computers[j][x] = 1;
-      }
-    }
-  }
-  console.log(computers);
+  let networks = [[]];
+  let oneIndex = [];
+  let alreadyIn = false;
+  let alIndex;
+  let thisNum = 0;
 
-  while (diffNet <= n - 1) {
-    console.log(leftNum, diffNet);
-    if (!isNaN(leftNum[diffNet])) {
-      connect(diffNet);
-      connectArr.push([]);
-      diffNet = 0;
-    } else {
-      diffNet += 1;
-    }
+  while (thisNum <= n - 1) {
+    oneIndex = [];
+    alreadyIn = false;
+    sameNetwork(thisNum);
+    thisNum += 1;
   }
 
-  function connect(num) {
-    //왜 ===[]은 안되는지?
-
-    if (connectArr[connectArr.length - 1] == "") {
-      connectArr[connectArr.length - 1].push(num);
-      leftNum[num] = "n";
-    }
-    for (let i = num + 1; i < n; i++) {
+  function sameNetwork(num) {
+    for (let i = 0; i < n; i++) {
       if (computers[num][i] === 1) {
-        leftNum[i] = "n";
-        connectArr[connectArr.length - 1].push(i);
-        connect(i);
+        oneIndex.push(i);
       }
+    }
+
+    for (let p = 0; p < networks.length; p++) {
+      for (let k = 0; k < oneIndex.length; k++) {
+        if (networks[p].includes(oneIndex[k])) {
+          alreadyIn = true;
+          alIndex = p;
+          break;
+        } else if (p === networks.length - 1 && k === oneIndex.length - 1) {
+          alreadyIn = 0;
+        }
+      }
+    }
+
+    if (alreadyIn === true) {
+      for (let j = 0; j < oneIndex.length; j++) {
+        if (!networks[alIndex].includes(oneIndex[j])) {
+          networks[alIndex].push(oneIndex[j]);
+        }
+      }
+    }
+
+    if (alreadyIn === 0) {
+      networks.push(oneIndex);
     }
   }
 
-  const A = [4, 5, 6];
+  // for (let i = 0; i < n; i++) {
+  //   if (computers[num][i] === 1) {
+  //     for (let p = 0; p < networks.length; p++) {
+  //       if (networks[p].includes(i)) {
+  //         alreadyIn = true;
+  //         alIndex = p;
+  //       }
+  //     }
+  //     if (alreadyIn === true) {
+  //       networks[alIndex].push(i);
+  //     } else if (alreadyIn === false) {
+  //       networks.push([]);
+  //       networks[networks.length - 1].push(i);
+  //     }
 
-  return connectArr.length - 1;
+  //     sameNetwork(i);
+  //   }
+
+  if (networks[0] == "") {
+    return networks.length - 1;
+  } else {
+    return networks.length;
+  }
 }
 document.write(
   solution(3, [
-    [1, 0, 1],
-    [0, 1, 1],
+    [1, 1, 0],
+    [1, 1, 0],
     [0, 0, 1],
   ])
 );

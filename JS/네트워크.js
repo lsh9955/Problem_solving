@@ -1,77 +1,32 @@
 function solution(n, computers) {
-  let comArr = Array(n)
+  let leftArr = Array(n)
     .fill()
     .map((v, i) => i);
-
-  let networks = [[]];
-  let oneIndex = [];
-  let alreadyIn = false;
-  let alIndex;
-  let thisNum = 0;
-
-  while (thisNum <= n - 1) {
-    oneIndex = [];
-    alreadyIn = false;
-    sameNetwork(thisNum);
-    thisNum += 1;
+  let network = [[]];
+  let count = 0;
+  while (count <= n - 1) {
+    if (!isNaN(leftArr[count])) {
+      findroute(count);
+      network.push([]);
+      count = 0;
+    }
+    count += 1;
   }
 
-  function sameNetwork(num) {
+  function findroute(num) {
+    leftArr[num] = "n";
+    if (network[network.length - 1] == "") {
+      network[network.length - 1].push(num);
+    }
     for (let i = 0; i < n; i++) {
-      if (computers[num][i] === 1) {
-        oneIndex.push(i);
+      if (computers[num][i] === 1 && !network[network.length - 1].includes(i)) {
+        network[network.length - 1].push(i);
+        findroute(i);
       }
-    }
-
-    for (let p = 0; p < networks.length; p++) {
-      for (let k = 0; k < oneIndex.length; k++) {
-        if (networks[p].includes(oneIndex[k])) {
-          alreadyIn = true;
-          alIndex = p;
-          break;
-        }
-      }
-    }
-    if (alreadyIn === false) {
-      alreadyIn = 0;
-    }
-
-    if (alreadyIn === true) {
-      for (let j = 0; j < oneIndex.length; j++) {
-        if (!networks[alIndex].includes(oneIndex[j])) {
-          networks[alIndex].push(oneIndex[j]);
-        }
-      }
-    }
-
-    if (alreadyIn === 0) {
-      networks.push(oneIndex);
     }
   }
 
-  // for (let i = 0; i < n; i++) {
-  //   if (computers[num][i] === 1) {
-  //     for (let p = 0; p < networks.length; p++) {
-  //       if (networks[p].includes(i)) {
-  //         alreadyIn = true;
-  //         alIndex = p;
-  //       }
-  //     }
-  //     if (alreadyIn === true) {
-  //       networks[alIndex].push(i);
-  //     } else if (alreadyIn === false) {
-  //       networks.push([]);
-  //       networks[networks.length - 1].push(i);
-  //     }
-
-  //     sameNetwork(i);
-  //   }
-
-  if (networks[0] == "") {
-    return networks.length - 1;
-  } else {
-    return networks.length;
-  }
+  return network.length - 1;
 }
 document.write(
   solution(6, [

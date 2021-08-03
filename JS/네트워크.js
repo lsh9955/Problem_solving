@@ -2,6 +2,7 @@ function solution(n, computers) {
   let comArr = Array(n)
     .fill()
     .map((v, i) => i);
+
   let networks = [[]];
   let oneIndex = [];
   let alreadyIn = false;
@@ -28,10 +29,11 @@ function solution(n, computers) {
           alreadyIn = true;
           alIndex = p;
           break;
-        } else if (p === networks.length - 1 && k === oneIndex.length - 1) {
-          alreadyIn = 0;
         }
       }
+    }
+    if (alreadyIn === false) {
+      alreadyIn = 0;
     }
 
     if (alreadyIn === true) {
@@ -72,9 +74,12 @@ function solution(n, computers) {
   }
 }
 document.write(
-  solution(3, [
-    [1, 1, 0],
-    [1, 1, 0],
-    [0, 0, 1],
+  solution(6, [
+    [1, 0, 1, 0, 1, 0],
+    [0, 1, 0, 1, 0, 0],
+    [0, 0, 1, 0, 1, 0],
+    [0, 0, 0, 1, 0, 0],
+    [0, 0, 1, 0, 1, 1],
+    [0, 0, 0, 0, 0, 1],
   ])
 );

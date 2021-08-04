@@ -29,6 +29,7 @@ function solution(bridge_length, weight, truck_weights) {
     }
 
     //trucks[0] 이 없을때 오류가 남-중요!(없어서 undefind가 되는 경우를 찾기)
+    //if가 아닌 else if 로 해주는 이유? -위의 if문을 거치고 난 이후 이 if문을 또 거치는 경우가 생김(둘 중에 하나만 통과해야함)
     else if (
       (trucks[0] &&
         bridgeWeight + trucks[0] - bridge[bridge.length - 1] > weight) ||

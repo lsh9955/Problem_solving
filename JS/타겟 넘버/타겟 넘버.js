@@ -1,5 +1,7 @@
 function solution(numbers, target) {
-  const A = Array(2 ** numbers.length).fill().map((v, i) => 0);
+  const A = Array(2 ** numbers.length)
+    .fill()
+    .map((v, i) => 0);
   function allArr(num, K) {
     let x = 2 ** (num.length - K);
     for (let i = 0; i < A.length; i++) {

@@ -1,51 +1,58 @@
 function solution(maps) {
-  const xindex = [1, -1, 0, 0];
-  const yindex = [0, 0, 1, -1];
+  let visited = maps;
+  const xIndex = [1, -1, 0, 0];
+  const yIndex = [0, 0, 1, -1];
+  let nowIndex = [[0, 0, 1]];
+  let ans = [];
+  let diff = [
+    [0, 0, 0],
+    [0, 0, 1],
+  ];
+  console.log(diff);
+  while (String(diff[0]) !== String(diff[1])) {
+    diff.shift();
+    let thisroute = nowIndex.shift();
 
-  let ans = -1;
-  let lastindex = [[0, 0, 1]];
-
-  while (lastindex.length > 0) {
-    let search = lastindex.shift();
-    if (search === undefined) {
-      break;
-    }
-    if (search[0] === maps[0].length - 1 && search[1] === maps.length - 1) {
-      ans = search[2];
-      break;
-    }
-
-    findroute(search[0], search[1], search[2]);
+    findroute(thisroute);
+    diff.push([nowIndex]);
   }
 
-  function findroute(x, y, z) {
+  for (let p = 0; p < nowIndex.length; p++) {
+    if (
+      nowIndex[p][0] === maps.length - 1 &&
+      nowIndex[p][1] === maps[0].length - 1
+    ) {
+      ans.push(nowIndex[p][2]);
+    }
+  }
+
+  if (ans == "") {
+    return -1;
+  } else {
+    return Math.min(...ans);
+  }
+
+  function findroute(index) {
+    visited[index[1]][index[0]] = 0;
     for (let i = 0; i < 4; i++) {
-      let xx = x + xindex[i];
-      let yy = y + yindex[i];
-      if (xx >= maps[0].length || yy >= maps.length || xx < 0 || yy < 0) {
+      if (
+        index[0] + xIndex[i] < 0 ||
+        index[0] + xIndex[i] >= maps.length ||
+        index[1] + yIndex[i] < 0 ||
+        index[1] + yIndex[i] >= maps[0].length
+      ) {
         continue;
       }
-      if (maps[yy][xx] === 1) {
-        lastindex.push([xx, yy, z + 1]);
-        maps[y][x] = 0;
+      if (visited[index[1] + yIndex[i]][index[0] + xIndex[i]] === 1) {
+        visited[index[1] + yIndex[i]][index[0] + xIndex[i]] = 0;
+        nowIndex.push([
+          index[0] + xIndex[i],
+          index[1] + yIndex[i],
+          index[2] + 1,
+        ]);
       }
-      // if (i === 0 && x !== maps[0].length - 1 && route[y][x + 1] === 1) {
-      //   lastindex.push([x + 1, y, z + 1]);
-      //     continue;
-      // }
-      // else if (i === 1 && y !== maps.length - 1 && route[y + 1][x] === 1) {
-      //   lastindex.push([x, y + 1, z + 1]);continue;
-      // }
-      // else if (i === 2 && x !== 0 && route[y][x - 1] === 1) {
-      //   lastindex.push([x - 1, y, z + 1]);continue;
-      // }
-      // else if (i === 3 && y !== 0 && route[y - 1][x] === 1) {
-      //   lastindex.push([x, y - 1, z + 1]);
-      // }
-      // }
     }
   }
-  return ans;
 }
 document.write(
   solution([

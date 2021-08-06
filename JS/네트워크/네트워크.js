@@ -42,7 +42,7 @@ function solution(n, computers) {
       }
     }
   }
-  //처음 배열이 [] 여서 길이에서 1을 빼야함. 위의 함수에서 network && 을 써서 하면 이렇게 할 필요가 없을 듯.
+  //while문을 돌때 마지막에 빈 배열이 하나 추가되어서, 길이에서 1을 빼야함
   return network.length - 1;
 }
 document.write(

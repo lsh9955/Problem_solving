@@ -1,45 +1,53 @@
 function solution(numbers) {
-  let numArr = [];
-  let allLength = 1;
-  let allNum = [];
-  let count = 1;
-
+  let thisNum = 2;
+  let allArr = [[]];
   for (let i = 0; i < numbers.length; i++) {
-    numArr.push(Number(numbers[i]));
+    allArr[0].push(numbers[i]);
   }
-  for (let k = 1; k <= numbers.length; k++) {
-    allLength = allLength * k;
-  }
-  for (let i = 0; i < numArr.length; i++) {
-    for (let k = 0; k < allLength / numArr.length; k++) {
-      allNum.push([numArr[i]]);
-    }
-  }
-  let numLength = allLength / numArr.length;
-  while (count < 5) {
-    numLength = numLength / (numArr.length - count);
-    let i = 0;
-    for (let p = 0; p < allLength / (numArr.length * numLength); p++) {
-      for (let k = 0; k < numArr.length; k++) {
-        for (let j = 0; j < numLength; j++) {
-          if (allNum[i].includes(numArr[k])) {
-            if (k === numArr.length - 1) {
-              k = 0;
-            } else {
-              k++;
-            }
+
+  if (numbers.length >= 2) {
+    while (thisNum <= numbers.length) {
+      allArr.push([]);
+      for (let k = 0; k < allArr[thisNum - 2].length; k++) {
+        let addNum = allArr[thisNum - 2].shift();
+        allArr[thisNum - 2].push(addNum);
+        for (let i = 0; i < numbers.length; i++) {
+          if (addNum.includes(numbers[i])) {
+          } else {
+            let addNumResult = numbers[i] + addNum;
+            allArr[thisNum - 1].push(addNumResult);
           }
-          allNum[i].push(numArr[k]);
-          i++;
         }
       }
+      thisNum++;
     }
-    count += 1;
+  } else {
   }
+  let allNum = [...new Set(allArr.flat().map((v) => Number(v)))];
+  let primeNum = [];
   console.log(allNum);
+  //console.log(0098)는 98이다
+  for (let i = 0; i < allNum.length; i++) {
+    for (let k = 3; k <= parseInt(allNum[i] / 2); k++) {
+      if (allNum[i] === 1 || allNum[i] === 2 || allNum[i] === 3) {
+        primeNum.push(allNum[i]);
+      } else if (
+        allNum[i] % 2 === 0 ||
+        allNum[i] === 0 ||
+        allNum[i] % k === 0
+      ) {
+        break;
+      } else if (k === parseInt(allNum[i] / 2)) {
+        primeNum.push(allNum[i]);
+      }
+    }
+  }
+  //아니...너무 어려운데...
+
+  console.log(primeNum);
 
   var answer = 0;
 
   return answer;
 }
-document.write(solution("17243"));
+document.write(solution("011"));

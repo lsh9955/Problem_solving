@@ -28,25 +28,25 @@ function solution(numbers) {
   }
 
   let allNum = [...new Set(allArr.flat().map((v) => Number(v[0])))];
+
   let primeNum = [];
 
   //console.log(0098)는 98이다
   for (let i = 0; i < allNum.length; i++) {
-    for (let k = 3; k <= parseInt(allNum[i] / 2) + 1; k++) {
-      if (allNum[i] === 1 || allNum[i] === 2 || allNum[i] === 3) {
+    //절반을 나눠서 하면 안됨
+    if (allNum[i] === 1 || allNum[i] === 0) {
+      i++;
+    }
+    for (let k = 2; k <= allNum[i]; k++) {
+      if (allNum[i] === 2) {
         primeNum.push(allNum[i]);
-      } else if (
-        allNum[i] % 2 === 0 ||
-        allNum[i] === 0 ||
-        allNum[i] % k === 0
-      ) {
+      } else if (allNum[i] % k === 0 && k !== allNum[i]) {
         break;
-      } else if (k === parseInt(allNum[i] / 2) + 1) {
+      } else if (k === allNum[i]) {
         primeNum.push(allNum[i]);
       }
     }
   }
-  console.log(primeNum);
 
   var answer = primeNum.length;
 

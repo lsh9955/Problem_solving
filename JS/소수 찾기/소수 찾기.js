@@ -42,7 +42,6 @@ function solution(numbers) {
       }
     }
   }
-  //아니...너무 어려운데...
 
   console.log(primeNum);
 

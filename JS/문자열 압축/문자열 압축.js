@@ -1,38 +1,33 @@
 function solution(s) {
-  console.log(s.split(""));
   let allShort = [];
 
-  function findRepeat(text, arr) {
-    if (text.length === 0) {
-      allShort.push(arr);
-    }
-    for (let i = 0; i < text.length; i++) {
-      let originalTxt = text.slice();
-
-      let find = originalTxt.splice(0, i + 1);
-      let sameTxt = originalTxt.splice(0, i + 1);
-
-      let newArr = arr.slice();
-      newArr.push(find);
-      newArr = newArr.flat(Infinity);
-      if (find.join("") === sameTxt.join("")) {
-        while (find.join("") === sameTxt.join("")) {
-          sameTxt = originalTxt.splice(0, i + 1);
+  for (let k = 1; k <= Math.floor(s.length / 2); k++) {
+    let thisTxt = s.split("").slice();
+    allShort.push([]);
+    while (thisTxt.length !== 0) {
+      let fir = thisTxt.slice(0, k);
+      if (fir.join("") === thisTxt.slice(k, 2 * k).join("")) {
+        let willAdd;
+        while (fir.join("") === thisTxt.slice(k, 2 * k).join("")) {
+          willAdd = thisTxt.splice(k, 2 * k);
         }
-        newArr.push("1");
-      } else {
-      }
-      originalTxt.unshift(sameTxt);
-      let newText = originalTxt.flat(Infinity);
 
-      findRepeat(newText, newArr);
+        allShort[allShort.length - 1].push("1");
+        allShort[allShort.length - 1].push(thisTxt.splice(0, k));
+        thisTxt.unshift(willAdd);
+        thisTxt = thisTxt.flat();
+      } else if (
+        fir.join("") !== thisTxt.slice(k, 2 * k).join("") ||
+        thisTxt.length < k
+      ) {
+        allShort[allShort.length - 1].push(thisTxt.splice(0, 1));
+      }
     }
   }
-  findRepeat(s.split(""), []);
-  allShort.sort((a, b) => a.length - b.length);
-  console.log(allShort);
-
-  var answer = allShort[0].length;
+  const allArr = allShort.map((v) => v.flat());
+  allArr.sort((a, b) => a.length - b.length);
+  console.log(allArr);
+  var answer = 0;
   return answer;
 }
 document.write(solution("abcabcdede"));

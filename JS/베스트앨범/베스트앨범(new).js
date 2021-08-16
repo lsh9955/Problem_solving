@@ -1,42 +1,54 @@
 function solution(genres, plays) {
-  const A = {
-    classic: {
-      3: 300,
-      4: 500,
-      8: 900,
-    },
-    jazz: {
-      7: 900,
-      1: 100,
-      3: 300,
-    },
-  };
+  let genresSort = [];
+  let songInfo = [];
+  let songAmount;
+  let answerArr = [];
 
-  let B = A.classic;
+  for (let k = 0; k < genres.length; k++) {
+    genresSort.push(genresSort.map((a) => a[0]).includes());
+  }
 
-  console.log(B);
-  // for (let key in B) {
-  //   console.log(B[key]);
-  // }
+  for (let i = 0; i < genres.length; i++) {
+    songInfo.push([genres[i], plays[i], i]);
+  }
 
-  //   let genresSort = [];
-  //   let songInfo = [];
+  songInfo.sort((a, b) => (b[1] === a[1] ? a[2] - b[2] : b[1] - a[1]));
 
-  //   for (let k = 0; k < genres.length; k++) {
-  //     genresSort.push(genresSort.map((a) => a[0]).includes());
-  //   }
+  songAmount = [...new Set(songInfo.map((e) => e[0]))];
+  for (let p = 0; p < songAmount.length; p++) {
+    let thisElement = songAmount.shift();
+    songAmount.push([thisElement, 0]);
+  }
 
-  //   for (let i = 0; i < genres.length; i++) {
-  //     songInfo.push([genres[i], plays[i], i]);
-  //   }
-  //   songInfo.sort((a, b) => (b[1] === a[1] ? a[2] - b[2] : b[1] - a[1]));
-  //   console.log(songInfo.map((a) => a[0]));
-  //   return "hello";
+  for (let i = 0; i < songInfo.length; i++) {
+    for (let k = 0; k < songAmount.length; k++) {
+      if (songAmount[k][0] === songInfo[i][0]) {
+        songAmount[k][1] += songInfo[i][1];
+      }
+    }
+  }
+  songAmount.sort((a, b) => b[1] - a[1]);
+
+  for (let i = 0; i < songAmount.length; i++) {
+    answerArr.push([]);
+  }
+  for (let k = 0; k < songAmount.length; k++) {
+    for (let i = 0; i < songInfo.length; i++) {
+      if (answerArr[k].length === 2) {
+        //break랑 k++랑 다른점이 무엇인지?
+        break;
+      } else if (songAmount[k][0] === songInfo[i][0]) {
+        answerArr[k].push(songInfo[i]);
+      }
+    }
+  }
+
+  return answerArr.flat().map((a) => a[2]);
 }
 
 document.write(
   solution(
-    ["classic", "pop", "classic", "classic", "pop", "jazz"],
-    [500, 600, 150, 800, 2500, 500]
+    ["classic", "pop", "classic", "classic", "pop"],
+    [500, 600, 150, 800, 2500]
   )
 );

@@ -9,8 +9,22 @@
   <body>
     <div>안녕하세요</div>
     <script>
-      $thisDiv = document.createElement("div");
-      function thisApp() {}
+      let ladder = {
+        step: 0,
+        up() {
+          this.step++;
+
+          return this;
+        },
+        down() {
+          this.step--;
+        },
+        showStep: function () {
+          // 사다리에서 몇 번째 단에 올라와 있는지 보여줌
+          alert(this.step);
+        },
+      };
+      ladder.up().showStep();
     </script>
   </body>
 </html>

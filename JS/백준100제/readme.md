@@ -1,7 +1,7 @@
 # 백준 기초알고리즘 풀이입니다
 
 (색이 다른 부분이 현재까지 푼 부분입니다)
-<span style="color:red">붉은 색</span>
+
 
 ---
 
@@ -45,7 +45,7 @@ rl.on("line", function (line) {
 | -------------------------------------- | ------------------------------------- | -------- |
 | -                                      | -                                     | -        |
 | **200-자료구조 1**                     | -                                     | -        |
-| <span style="color:blue">스택</span>                                   | https://www.acmicpc.net/problem/10828 | 10828    |
+| 스택                                   | https://www.acmicpc.net/problem/10828 | 10828    |
 | 단어 뒤집기                            | https://www.acmicpc.net/problem/9093  | 9093     |
 | 괄호                                   | https://www.acmicpc.net/problem/9012  | 9012     |
 | 스택 수열                              | https://www.acmicpc.net/problem/1874  | 1874     |

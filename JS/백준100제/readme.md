@@ -44,7 +44,7 @@ rl.on("line", function (line) {
 | -------------------------------------- | ------------------------------------- | -------- |
 | -                                      | -                                     | -        |
 | **200-자료구조 1**                     | -                                     | -        |
-| <span style="color:skyblue">스택</span>                                   | https://www.acmicpc.net/problem/10828 | 10828    |
+| <span style="color:blue">스택</span>                                   | https://www.acmicpc.net/problem/10828 | 10828    |
 | 단어 뒤집기                            | https://www.acmicpc.net/problem/9093  | 9093     |
 | 괄호                                   | https://www.acmicpc.net/problem/9012  | 9012     |
 | 스택 수열                              | https://www.acmicpc.net/problem/1874  | 1874     |

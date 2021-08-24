@@ -2,6 +2,42 @@
 
 (색이 다른 부분이 현재까지 푼 부분입니다)
 
+---
+
+## 자바스크립트 입력 받는 방법
+
+```javascript
+// 한 줄의 입력만 받을 때
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+  console.log("hello !", line); // 다음의 line에서 입력을 받는다.
+  rl.close();
+}).on("close", function () {
+  // 수행할 작업을 구현하기
+  process.exit();
+});
+
+// 여러 줄의 입력을 받을 때
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+let input = [];
+rl.on("line", function (line) {
+  input.push(line); // input 배열에 입력을 한 줄씩 넣어준다.
+}).on("close", function () {
+  sol(input); // 입력이 포함된 input 배열을 구현한 sol함수에 인수로 넣을 수 있다.
+  process.exit();
+});
+```
+
 ## 알고리즘 기초 1/2
 
 | 제목                                   | URL                                   |

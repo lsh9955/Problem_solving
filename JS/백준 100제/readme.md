@@ -96,4 +96,89 @@
 
 ---
 
-abc
+## 알고리즘 기초 1/2
+
+| 제목                           | URL                                   |
+| ------------------------------ | ------------------------------------- |
+| -                              | -                                     |
+| -                              | -                                     |
+| 500 - 브루트 포스              | -                                     |
+| 일곱 난쟁이                    | https://www.acmicpc.net/problem/2309  |
+| 사탕 게임                      | https://www.acmicpc.net/problem/3085  |
+| 날짜 계산                      | https://www.acmicpc.net/problem/1476  |
+| 리모컨                         | https://www.acmicpc.net/problem/1107  |
+| 테트로미노                     | https://www.acmicpc.net/problem/14500 |
+| 카잉 달력                      | https://www.acmicpc.net/problem/6064  |
+| 수 이어 쓰기 1                 | https://www.acmicpc.net/problem/1748  |
+| 1, 2, 3 더하기                 | https://www.acmicpc.net/problem/9095  |
+| -                              | -                                     |
+| 510 - 브루트 포스 (N과 M)      | -                                     |
+| N과 M (1)                      | https://www.acmicpc.net/problem/15649 |
+| N과 M (2)                      | https://www.acmicpc.net/problem/15650 |
+| N과 M (3)                      | https://www.acmicpc.net/problem/15651 |
+| N과 M (4)                      | https://www.acmicpc.net/problem/15652 |
+| N과 M (5)                      | https://www.acmicpc.net/problem/15654 |
+| N과 M (6)                      | https://www.acmicpc.net/problem/15655 |
+| N과 M (7)                      | https://www.acmicpc.net/problem/15656 |
+| N과 M (8)                      | https://www.acmicpc.net/problem/15657 |
+| N과 M (9)                      | https://www.acmicpc.net/problem/15663 |
+| N과 M (10)                     | https://www.acmicpc.net/problem/15664 |
+| N과 M (11)                     | https://www.acmicpc.net/problem/15665 |
+| N과 M (12)                     | https://www.acmicpc.net/problem/15666 |
+| -                              | -                                     |
+| 520 - 브루트 포스 - 순열       | -                                     |
+| 다음 순열                      | https://www.acmicpc.net/problem/10972 |
+| 이전 순열                      | https://www.acmicpc.net/problem/10973 |
+| 모든 순열                      | https://www.acmicpc.net/problem/10974 |
+| 차이를 최대로                  | https://www.acmicpc.net/problem/10819 |
+| 외판원 순회 2                  | https://www.acmicpc.net/problem/10971 |
+| 로또                           | https://www.acmicpc.net/problem/6603  |
+| -                              | -                                     |
+| 530 - 브루트 포스 - 재귀       | -                                     |
+| 1, 2, 3 더하기                 | https://www.acmicpc.net/problem/9095  |
+| 암호 만들기                    | https://www.acmicpc.net/problem/1759  |
+| 퇴사                           | https://www.acmicpc.net/problem/14501 |
+| 스타트와 링크                  | https://www.acmicpc.net/problem/14889 |
+| 링크와 스타트                  | https://www.acmicpc.net/problem/15661 |
+| 부등호                         | https://www.acmicpc.net/problem/2529  |
+| 맞춰봐                         | https://www.acmicpc.net/problem/1248  |
+| -                              | -                                     |
+| 540 - 브루트 포스 - 비트마스크 | -                                     |
+| 집합                           | https://www.acmicpc.net/problem/11723 |
+| 부분수열의 합                  | https://www.acmicpc.net/problem/1182  |
+| 스타트와 링크                  | https://www.acmicpc.net/problem/14889 |
+| 종이 조각                      | https://www.acmicpc.net/problem/14391 |
+| -                              | -                                     |
+| 600 - 그래프 1                 | -                                     |
+| ABCDE                          | https://www.acmicpc.net/problem/13023 |
+| DFS와 BFS                      | https://www.acmicpc.net/problem/1260  |
+| 연결 요소의 개수               | https://www.acmicpc.net/problem/11724 |
+| 이분 그래프                    | https://www.acmicpc.net/problem/1707  |
+| 단지번호붙이기                 | https://www.acmicpc.net/problem/2667  |
+| 섬의 개수                      | https://www.acmicpc.net/problem/4963  |
+| 미로 탐색                      | https://www.acmicpc.net/problem/2178  |
+| 토마토                         | https://www.acmicpc.net/problem/7576  |
+| 나이트의 이동                  | https://www.acmicpc.net/problem/7562  |
+| -                              | -                                     |
+| 601 - 그래프 1 (연습)          | -                                     |
+| Two Dots                       | https://www.acmicpc.net/problem/16929 |
+| 서울 지하철 2호선              | https://www.acmicpc.net/problem/16947 |
+| -                              | -                                     |
+| 602 - 그래프 1 (도전)          | -                                     |
+| BFS 스페셜 저지                | https://www.acmicpc.net/problem/16940 |
+| DFS 스페셜 저지                | https://www.acmicpc.net/problem/16964 |
+| 다리 만들기                    | https://www.acmicpc.net/problem/2146  |
+| -                              | -                                     |
+| 610 - BFS                      | -                                     |
+| 숨바꼭질                       | https://www.acmicpc.net/problem/1697  |
+| 숨바꼭질 4                     | https://www.acmicpc.net/problem/13913 |
+| 이모티콘                       | https://www.acmicpc.net/problem/14226 |
+| 숨바꼭질 3                     | https://www.acmicpc.net/problem/13549 |
+| 알고스팟                       | https://www.acmicpc.net/problem/1261  |
+| -                              | -                                     |
+| 620 - 트리 1                   | -                                     |
+| 트리 순회                      | https://www.acmicpc.net/problem/1991  |
+| 트리의 높이와 너비             | https://www.acmicpc.net/problem/2250  |
+| 트리의 부모 찾기               | https://www.acmicpc.net/problem/11725 |
+| 트리의 지름                    | https://www.acmicpc.net/problem/1167  |
+| 트리의 지름                    | https://www.acmicpc.net/problem/1967  |

@@ -5,8 +5,8 @@
 ## 알고리즘 기초 1/2
 
 |제목|URL|
-|**200-자료구조 1**|---|
-|----|----|
+|**200-자료구조 1**|-|
+|-|-|
 |스택|https://www.acmicpc.net/problem/10828|
 |단어 뒤집기|https://www.acmicpc.net/problem/9093|
 |괄호|https://www.acmicpc.net/problem/9012|
@@ -15,7 +15,7 @@
 |큐|https://www.acmicpc.net/problem/10845|
 |조세퍼스 문제|https://www.acmicpc.net/problem/1158|
 |덱|https://www.acmicpc.net/problem/10866|
-|**201 - 자료구조 1 (연습)**|---|
+|**201 - 자료구조 1 (연습)**|-|
 |----|---|
 |단어 뒤집기 2|https://www.acmicpc.net/problem/17413|
 |쇠막대기|https://www.acmicpc.net/problem/10799|

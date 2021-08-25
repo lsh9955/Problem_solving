@@ -46,7 +46,7 @@ rl.on("line", function (line) {
 | -                                      | -                                     | -        |
 | **200-자료구조 1**                     | -                                     | -        |
 | 스택                                   | https://www.acmicpc.net/problem/10828 | 10828    |
-| 단어 뒤집기                            | https://www.acmicpc.net/problem/9093  | 9093     |
+| `단어 뒤집기`                            | https://www.acmicpc.net/problem/9093  | 9093     |
 | 괄호                                   | https://www.acmicpc.net/problem/9012  | 9012     |
 | 스택 수열                              | https://www.acmicpc.net/problem/1874  | 1874     |
 | 에디터                                 | https://www.acmicpc.net/problem/1406  | 1406     |

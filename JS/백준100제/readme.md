@@ -2,7 +2,6 @@
 
 (색이 다른 부분이 현재까지 푼 부분입니다)
 
-
 ---
 
 ## 자바스크립트 입력 받는 방법
@@ -48,9 +47,9 @@ rl.on("line", function (line) {
 | 스택                                   | https://www.acmicpc.net/problem/10828 | 10828    |
 | 단어 뒤집기                            | https://www.acmicpc.net/problem/9093  | 9093     |
 | 괄호                                   | https://www.acmicpc.net/problem/9012  | 9012     |
-| `스택 수열`                              | https://www.acmicpc.net/problem/1874  | 1874     |
+| 스택 수열                              | https://www.acmicpc.net/problem/1874  | 1874     |
 | 에디터                                 | https://www.acmicpc.net/problem/1406  | 1406     |
-| 큐                                     | https://www.acmicpc.net/problem/10845 | 10845    |
+| `큐`                                   | https://www.acmicpc.net/problem/10845 | 10845    |
 | 조세퍼스 문제                          | https://www.acmicpc.net/problem/1158  | 1158     |
 | 덱                                     | https://www.acmicpc.net/problem/10866 | 10866    |
 | -                                      | -                                     | -        |

@@ -21,7 +21,7 @@ function solution(input) {
       returnAns.push(" " + roundArr[killNum]);
     }
     roundArr.splice(killNum, 1);
-    //위치랑 길이의 차이때문에 헷갈리는 부분이었음.
+    //위치랑 길이의 차이때문에 헷갈리는 부분이었음
     killNum + countNum > roundArr.length - 1
       ? (killNum = (killNum + countNum) % roundArr.length)
       : (killNum = killNum + countNum);

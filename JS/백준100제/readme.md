@@ -49,13 +49,13 @@ rl.on("line", function (line) {
 | 괄호                                   | https://www.acmicpc.net/problem/9012  | 9012     |
 | 스택 수열                              | https://www.acmicpc.net/problem/1874  | 1874     |
 | 에디터                                 | https://www.acmicpc.net/problem/1406  | 1406     |
-| `큐`                                   | https://www.acmicpc.net/problem/10845 | 10845    |
+| 큐                                     | https://www.acmicpc.net/problem/10845 | 10845    |
 | 조세퍼스 문제                          | https://www.acmicpc.net/problem/1158  | 1158     |
 | 덱                                     | https://www.acmicpc.net/problem/10866 | 10866    |
 | -                                      | -                                     | -        |
 | **201 - 자료구조 1 (연습)**            | -                                     | -        |
 | 단어 뒤집기 2                          | https://www.acmicpc.net/problem/17413 | 17413    |
-| 쇠막대기                               | https://www.acmicpc.net/problem/10799 | 10799    |
+| `쇠막대기`                             | https://www.acmicpc.net/problem/10799 | 10799    |
 | 오큰수                                 | https://www.acmicpc.net/problem/17298 | 17298    |
 | 오등큰수                               | https://www.acmicpc.net/problem/17299 | 17299    |
 | -                                      | -                                     | -        |

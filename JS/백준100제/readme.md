@@ -55,9 +55,9 @@ rl.on("line", function (line) {
 | -                                      | -                                     | -        |
 | **201 - 자료구조 1 (연습)**            | -                                     | -        |
 | 단어 뒤집기 2                          | https://www.acmicpc.net/problem/17413 | 17413    |
-| `쇠막대기`                             | https://www.acmicpc.net/problem/10799 | 10799    |
+| 쇠막대기                               | https://www.acmicpc.net/problem/10799 | 10799    |
 | 오큰수                                 | https://www.acmicpc.net/problem/17298 | 17298    |
-| 오등큰수                               | https://www.acmicpc.net/problem/17299 | 17299    |
+| `오등큰수`                             | https://www.acmicpc.net/problem/17299 | 17299    |
 | -                                      | -                                     | -        |
 | **203 - 자료구조 1 (참고)**            | -                                     | -        |
 | 후위 표기식2                           | https://www.acmicpc.net/problem/1935  | 1935     |

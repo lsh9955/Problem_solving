@@ -1,7 +1,7 @@
 let fs = require("fs");
 
-// let input = require("fs").readFileSync("예제.txt").toString();
-let input = fs.readFileSync("/dev/stdin").toString().trim();
+let input = require("fs").readFileSync("예제.txt").toString();
+// let input = fs.readFileSync("/dev/stdin").toString().trim();
 //제출시 위에꺼로 제출
 
 function solution(input) {
@@ -27,8 +27,14 @@ function solution(input) {
       resultArr[0].push(inputArr[i]);
       resultArr.unshift([]);
     } else if (calculateArr.includes(inputArr[i])) {
+      if (resultArr.length === 0) {
+        resultArr.push([]);
+      }
       resultArr[0].push(inputArr[i]);
     } else {
+      if (resultArr.length === 0) {
+        resultArr.push([]);
+      }
       resultArr[0].unshift(inputArr[i]);
     }
   }

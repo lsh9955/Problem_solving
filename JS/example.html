@@ -7,6 +7,54 @@
     <title>Document</title>
   </head>
   <body>
-    <script></script>
+    <script>
+      function solution(input) {
+        let inputArr = input.split("");
+        const calculateArr = ["+", "-", "/", "*"];
+        let divideNum = -1;
+        let howDeepArr = [];
+        let resultArr = [[[[15], 7, 4], 1, 2, 3, 4]];
+
+        console.log(resultArr.flat().flat());
+
+        // for (let i = inputArr.length - 1; i >= 0; i--) {
+        //   console.log(deepArr(resultArr, divideNum));
+        //   if (inputArr[i] === ")") {
+        //     if (divideNum < 0) {
+        //       resultArr.unshift([]);
+
+        //       deepArr(resultArr, 0);
+        //     } else {
+        //       deepArr(resultArr, divideNum).unshift([]);
+        //     }
+        //     divideNum++;
+        //     howDeepArr.push(divideNum);
+        //   } else if (inputArr[i] === "(") {
+        //     divideNum--;
+
+        //     //이에 따른 findArr변경.
+        //     //시간초과가 난다면 이부분 때문일듯.
+        //   }
+        //   //괄호 안에 있을 때와 아닐때를 구분해 줘야함.->굳이 안해줘도 될듯
+        //   else if (calculateArr.includes(inputArr[i])) {
+        //     if (divideNum < 0) {
+        //       deepArr(resultArr, divideNum).splice(1, 0, inputArr[i]);
+        //     } else {
+        //       findArr.push(inputArr[i]);
+        //     }
+        //   } else {
+        //     if (divideNum < 0) {
+        //       resultArr.unshift(inputArr[i]);
+        //     } else {
+        //       deepArr(resultArr, divideNum).unshift(inputArr[i]);
+        //     }
+        //   }
+
+        //   //   console.log(resultArr.join(" ").trim());
+        // }
+        // return String(resultArr.flat().join("").trim());
+      }
+      document.write(solution("A + B * (C * D) * E + F"));
+    </script>
   </body>
 </html>

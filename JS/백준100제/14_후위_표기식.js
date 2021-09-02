@@ -21,7 +21,6 @@ function solution(input) {
   }
 
   for (let i = inputArr.length - 1; i >= 0; i--) {
-    console.log(findArr);
     if (inputArr[i] === ")") {
       if (divideNum < 0) {
         resultArr.unshift([]);
@@ -40,20 +39,20 @@ function solution(input) {
       //시간초과가 난다면 이부분 때문일듯.
     }
     //괄호 안에 있을 때와 아닐때를 구분해 줘야함.->굳이 안해줘도 될듯
-    // else if (calculateArr.includes(inputArr[i])) {
-    //   if (divideNum < 0) {
-    //     resultArr.splice(1, 0, inputArr[i]);
-    //   } else {
-    //     findArr.push(inputArr[i]);
-    //   }
-    // } else {
-    //   if (divideNum < 0) {
-    //     resultArr.unshift(inputArr[i]);
-    //   } else {
-    //     console.log(findArr);
-    //     findArr.unshift(inputArr[i]);
-    //   }
-    // }
+    else if (calculateArr.includes(inputArr[i])) {
+      if (divideNum < 0) {
+        resultArr.splice(1, 0, inputArr[i]);
+      } else {
+        findArr.push(inputArr[i]);
+      }
+    } else {
+      if (divideNum < 0) {
+        resultArr.unshift(inputArr[i]);
+      } else {
+        console.log(resultArr[0]);
+        findArr.unshift(inputArr[i]);
+      }
+    }
 
     //   console.log(resultArr.join(" ").trim());
   }

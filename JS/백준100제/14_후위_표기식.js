@@ -1,7 +1,7 @@
 let fs = require("fs");
 
-let input = require("fs").readFileSync("예제.txt").toString();
-// let input = fs.readFileSync("/dev/stdin").toString().trim();
+// let input = require("fs").readFileSync("예제.txt").toString();
+let input = fs.readFileSync("/dev/stdin").toString().trim();
 //제출시 위에꺼로 제출
 
 function solution(input) {
@@ -41,7 +41,8 @@ function solution(input) {
     ) {
       if (inputArr[i] === "*" || inputArr[i] === "/") {
         if (deepArr.length !== 0) {
-          deepArr[deepArr.length - 1].push(inputArr[i]);
+          //여길 push로 해버리면 안됨. 맨 마지막에 가는 것이 아닐수도 있기 때문, 하나의 캐릭터를 건너뛴 자리에 있어야 함.
+          deepArr[deepArr.length - 1].splice(1, 0, inputArr[i]);
         } else {
           resultArr.splice(1, 0, inputArr[i]);
         }

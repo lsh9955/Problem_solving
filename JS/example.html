@@ -45,7 +45,7 @@
           ) {
             if (inputArr[i] === "*" || inputArr[i] === "/") {
               if (deepArr.length !== 0) {
-                deepArr[deepArr.length - 1].push(inputArr[i]);
+                deepArr[deepArr.length - 1].splice(1, 0, inputArr[i]);
               } else {
                 resultArr.splice(1, 0, inputArr[i]);
               }

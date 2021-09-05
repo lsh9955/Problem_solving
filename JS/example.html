@@ -8,174 +8,62 @@
   </head>
   <body>
     <script>
-      function solution(input) {
-        let inputArr = input.split("");
-        for (let i = inputArr.length - 1; i >= 0; i--) {
-          if (inputArr[i] === "\r" || inputArr[i] === "\n") {
-            inputArr.splice(i, 1);
-          }
-        }
+      function solution(begin, target, words) {
+        let ansArr = [];
 
-        const calculateArr = ["+", "-", "/", "*"];
-        let divideNum = 0;
-        let arrCount = 0;
-        let multipleNum = 0;
-        let deepArr = [];
-        let resultArr = [];
-
-        for (let i = inputArr.length - 1; i >= 0; i--) {
-          if (inputArr[i] === ")") {
-            //맨 바깥의 괄호가 배열의 맨 앞에 오게 됨
-            deepArr.push([]);
-            divideNum++;
-            divideNum > arrCount ? (arrCount = divideNum) : "";
-          } else if (inputArr[i] === "(") {
-            divideNum--;
-            if (deepArr.length > 1) {
-              deepArr[deepArr.length - 2].unshift(deepArr.pop());
-            }
-            if (deepArr.length === 1) {
-              resultArr.unshift(deepArr.pop());
-            }
-          } else if (
-            inputArr[i] === "*" ||
-            inputArr[i] === "/" ||
-            inputArr[i] === "+" ||
-            inputArr[i] === "-"
-          ) {
-            if (inputArr[i] === "*" || inputArr[i] === "/") {
-              if (deepArr.length !== 0) {
-                deepArr[deepArr.length - 1].splice(1, 0, inputArr[i]);
-              } else {
-                resultArr.splice(1, 0, inputArr[i]);
-              }
-            } else if (inputArr[i] === "+" || inputArr[i] === "-") {
-              if (deepArr.length !== 0) {
-                for (let j = 0; j < deepArr[deepArr.length - 1].length; j++) {
+        function findAns(change, count) {
+          if (change === target) {
+            ansArr.push(count);
+          } else {
+            for (let i = 0; i < words.length; i++) {
+              for (let k = 0; k < words[i].length; k++) {
+                if (k === 0) {
                   if (
-                    deepArr[deepArr.length - 1][j] === "+" ||
-                    deepArr[deepArr.length - 1][j] === "-"
+                    words[i].slice(1) === change.slice(1) &&
+                    change[k] !== words[i][k] &&
+                    words[i][k] === target[k]
                   ) {
-                    for (let n = j - 1; n >= 0; n--) {
-                      if (
-                        deepArr[deepArr.length - 1][n] === "*" ||
-                        deepArr[deepArr.length - 1][n] === "/"
-                      ) {
-                        multipleNum++;
-                        //여기서 inculdes를 쓰면 알파벳도 true로 인식을 해버림. 왜그러는지?
-                      } else if (
-                        deepArr[deepArr.length - 1][n] !== "*" &&
-                        deepArr[deepArr.length - 1][n] !== "/"
-                      ) {
-                        multipleNum--;
-                      }
-                      if (multipleNum === -1) {
-                        deepArr[deepArr.length - 1].splice(n, 0, inputArr[i]);
-
-                        break;
-                      }
-                    }
-                    multipleNum = 0;
-                    break;
-                  } else if (
-                    j === deepArr[deepArr.length - 1].length - 1 &&
-                    deepArr[deepArr.length - 1][j] !== "+" &&
-                    deepArr[deepArr.length - 1][j] !== "-"
-                  ) {
-                    deepArr[deepArr.length - 1].push(inputArr[i]);
-                    break;
+                    findAns(words[i], count + 1);
                   }
-                }
-              }
-              //오류부분
-              else {
-                for (let j = 0; j < resultArr.length; j++) {
-                  if (resultArr[j] === "+" || resultArr[j] === "-") {
-                    //+또는 -기호 이전부터 시작이므로\
-
-                    for (let n = j - 1; n >= 0; n--) {
-                      if (resultArr[n] === "*" || resultArr[n] === "/") {
-                        multipleNum++;
-                        //여기서 inculdes를 쓰면 알파벳도 true로 인식을 해버림. 왜그러는지?
-                      } else if (resultArr[n] !== "*" && resultArr[n] !== "/") {
-                        multipleNum--;
-                      }
-                      if (multipleNum === -1) {
-                        resultArr.splice(n, 0, inputArr[i]);
-
-                        break;
-                      }
-                    }
-                    multipleNum = 0;
-                    break;
-                  } else if (
-                    j === resultArr.length - 1 &&
-                    resultArr[j] !== "+" &&
-                    resultArr[j] !== "-"
+                } else if (k === words[i].length - 1) {
+                  if (
+                    words[i].slice(0, k) === change.slice(0, k) &&
+                    change[k] !== words[i][k] &&
+                    words[i][k] === target[k]
                   ) {
-                    resultArr.push(inputArr[i]);
-                    break;
+                    findAns(words[i], count + 1);
+                  }
+                } else if (
+                  i === words.length - 1 &&
+                  k === words[i].length - 1 &&
+                  words[i][k] === target[k]
+                ) {
+                  ansArr.push(-1);
+                } else {
+                  if (
+                    words[i].slice(0, k) === change.slice(0, k) &&
+                    words[i].slice(k + 1) === change.slice(k + 1) &&
+                    change[k] !== words[i][k] &&
+                    words[i][k] === target[k]
+                  ) {
+                    console.log(words[i]);
+                    findAns(words[i], count + 1);
                   }
                 }
               }
             }
           }
-          //오류부분
-          else {
-            if (deepArr.length !== 0) {
-              deepArr[deepArr.length - 1].unshift(inputArr[i]);
-            } else {
-              resultArr.unshift(inputArr[i]);
-            }
-          }
         }
-        for (let k = 0; k < arrCount; k++) {
-          resultArr = resultArr.flat();
-        }
-        for (let i = resultArr.length - 1; i >= 0; i--) {
-          resultArr[i] === " " ? resultArr.splice(i, 1) : "";
-        }
+        findAns("hit", 0);
+        console.log(ansArr);
 
-        console.log(resultArr.join(""));
+        var answer = 0;
+
+        return answer;
       }
-      // for (let i = inputArr.length - 1; i >= 0; i--) {
-      //   console.log(deepArr(resultArr, divideNum));
-      //   if (inputArr[i] === ")") {
-      //     if (divideNum < 0) {
-      //       resultArr.unshift([]);
-
-      //       deepArr(resultArr, 0);
-      //     } else {
-      //       deepArr(resultArr, divideNum).unshift([]);
-      //     }
-      //     divideNum++;
-      //     howDeepArr.push(divideNum);
-      //   } else if (inputArr[i] === "(") {
-      //     divideNum--;
-
-      //     //이에 따른 findArr변경.
-      //     //시간초과가 난다면 이부분 때문일듯.
-      //   }
-      //   //괄호 안에 있을 때와 아닐때를 구분해 줘야함.->굳이 안해줘도 될듯
-      //   else if (calculateArr.includes(inputArr[i])) {
-      //     if (divideNum < 0) {
-      //       deepArr(resultArr, divideNum).splice(1, 0, inputArr[i]);
-      //     } else {
-      //       findArr.push(inputArr[i]);
-      //     }
-      //   } else {
-      //     if (divideNum < 0) {
-      //       resultArr.unshift(inputArr[i]);
-      //     } else {
-      //       deepArr(resultArr, divideNum).unshift(inputArr[i]);
-      //     }
-      //   }
-
-      //   //   console.log(resultArr.join(" ").trim());
-      // }
-      // return String(resultArr.flat().join("").trim());
-
-      document.write(solution("A+B*C/(D*E-F)+G"));
+      document.write(
+        solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])
+      );
     </script>
   </body>
 </html>

@@ -12,66 +12,38 @@
         let ansArr = [];
 
         function findAns(change, count, wordArr) {
-          if (count > words.length) {
+          let countNum = Array(words.length)
+            .fill()
+            .map((v, i) => 0);
+
+          let changeIndex;
+
+          for (let i = 0; i < wordArr.length; i++) {
+            if (wordArr[i] === 1) {
+              i++;
+            }
+            for (let k = 0; k < wordArr[i].length; k++) {
+              if (change[k] !== wordArr[i][k] && wordArr[i] !== target) {
+                countNum[i]++;
+              } else if (change[k] !== wordArr[i][k] && wordArr[i] === target) {
+                ansArr.push(count + 1);
+              }
+            }
+          }
+          if (!countNum.includes(1)) {
+            ansArr.push(-1);
           } else {
-            for (let i = 0; i < wordArr.length; i++) {
-              for (let k = 0; k < begin.length; k++) {
-                if (k === 0) {
-                  if (
-                    wordArr[i].slice(1) === change.slice(1) &&
-                    change[k] !== wordArr[i][k] &&
-                    wordArr[i] !== target
-                  ) {
-                    let reduceWord = wordArr.splice(i, 1);
-                    //배열로 들어가기 때문에 reudceWord[0]으로 해줘야함,
-                    findAns(reduceWord[0], count + 1, wordArr);
-                  } else if (
-                    wordArr[i].slice(1) === change.slice(1) &&
-                    change[k] !== wordArr[i][k] &&
-                    wordArr[i] === target
-                  ) {
-                    ansArr.push(count + 1);
-                  }
-                } else if (k === begin.length - 1) {
-                  console.log(count === 3 && wordArr, i);
-                  if (
-                    wordArr[i].slice(0, k) === change.slice(0, k) &&
-                    change[k] !== wordArr[i][k] &&
-                    wordArr[i] !== target
-                  ) {
-                    let reduceWord = wordArr.splice(i, 1);
-                    findAns(reduceWord[0], count + 1, wordArr);
-                  } else if (
-                    wordArr[i].slice(0, k) === change.slice(0, k) &&
-                    change[k] !== wordArr[i][k] &&
-                    wordArr[i] === target
-                  ) {
-                    ansArr.push(count + 1);
-                  }
-                } else {
-                  if (
-                    wordArr[i].slice(0, k) === change.slice(0, k) &&
-                    wordArr[i].slice(k + 1) === change.slice(k + 1) &&
-                    change[k] !== wordArr[i][k] &&
-                    wordArr[i] !== target
-                  ) {
-                    let reduceWord = wordArr.splice(i, 1);
-                    findAns(reduceWord[0], count + 1, wordArr);
-                  } else if (
-                    wordArr[i].slice(0, k) === change.slice(0, k) &&
-                    wordArr[i].slice(k + 1) === change.slice(k + 1) &&
-                    change[k] !== wordArr[i][k] &&
-                    wordArr[i] === target
-                  ) {
-                    ansArr.push(count + 1);
-                  }
-                }
+            for (let j = 0; j < countNum.length; j++) {
+              if (countNum[j] === 1) {
+                changeIndex = wordArr[j];
+                wordArr[j] = 1;
+                findAns(changeIndex, count + 1, wordArr);
               }
             }
           }
         }
         findAns("hit", 0, words);
-        console.log(ansArr);
+
         var answer = ansArr;
 
         return answer;

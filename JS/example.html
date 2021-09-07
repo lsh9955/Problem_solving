@@ -7,50 +7,6 @@
     <title>Document</title>
   </head>
   <body>
-    <script>
-      function solution(begin, target, words) {
-        let ansArr = [];
-
-        function findAns(change, count, wordArr) {
-          let countNum = Array(words.length)
-            .fill()
-            .map((v, i) => 0);
-
-          let changeIndex;
-
-          for (let i = 0; i < wordArr.length; i++) {
-            if (wordArr[i] === 1) {
-              i++;
-            }
-            for (let k = 0; k < wordArr[i].length; k++) {
-              if (change[k] !== wordArr[i][k] && wordArr[i] !== target) {
-                countNum[i]++;
-              } else if (change[k] !== wordArr[i][k] && wordArr[i] === target) {
-                ansArr.push(count + 1);
-              }
-            }
-          }
-          if (!countNum.includes(1)) {
-            ansArr.push(-1);
-          } else {
-            for (let j = 0; j < countNum.length; j++) {
-              if (countNum[j] === 1) {
-                changeIndex = wordArr[j];
-                wordArr[j] = 1;
-                findAns(changeIndex, count + 1, wordArr);
-              }
-            }
-          }
-        }
-        findAns("hit", 0, words);
-
-        var answer = ansArr;
-
-        return answer;
-      }
-      document.write(
-        solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"])
-      );
-    </script>
+    <script></script>
   </body>
 </html>

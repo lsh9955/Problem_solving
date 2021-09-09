@@ -45,7 +45,6 @@ function solution(begin, target, words) {
     for (let i = 0; i < ansArr.length; i++) {
       if (ansArr[i] !== -1) {
         return ansArr[i];
-        break;
       }
     }
   }

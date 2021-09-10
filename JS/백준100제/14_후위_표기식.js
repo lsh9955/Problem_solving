@@ -3,7 +3,9 @@ let fs = require("fs");
 // let input = require("fs").readFileSync("예제.txt").toString();
 let input = fs.readFileSync("/dev/stdin").toString().trim();
 //제출시 위에꺼로 제출
-
+//유용했던 글
+//A+B*C/(D*E-F)+G
+//https://softworking.tistory.com/172
 function solution(input) {
   let inputArr = input.split("");
   for (let i = inputArr.length - 1; i >= 0; i--) {

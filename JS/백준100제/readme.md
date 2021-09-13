@@ -61,7 +61,7 @@ rl.on("line", function (line) {
 | -                                      | -                                     | -        |
 | **203 - 자료구조 1 (참고)**            | -                                     | -        |
 | 후위 표기식2                           | https://www.acmicpc.net/problem/1935  | 1935     |
-| `후위 표기식`                          | https://www.acmicpc.net/problem/1918  | 1918     |
+| 후위 표기식                            | https://www.acmicpc.net/problem/1918  | 1918     |
 | 알파벳 개수                            | https://www.acmicpc.net/problem/10808 | 10808    |
 | 알파벳 찾기                            | https://www.acmicpc.net/problem/10809 | 10809    |
 | 문자열 분석                            | https://www.acmicpc.net/problem/10820 | 10820    |

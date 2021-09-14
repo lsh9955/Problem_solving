@@ -1,7 +1,7 @@
 let fs = require("fs");
 
-let input = require("fs").readFileSync("예제.txt").toString();
-// let input = fs.readFileSync("/dev/stdin").toString();
+// let input = require("fs").readFileSync("예제.txt").toString();
+let input = fs.readFileSync("/dev/stdin").toString();
 // let input = fs.readFileSync("/dev/stdin").toString().trim();
 //제출시 위에꺼로 제출
 function solution(input) {
@@ -29,7 +29,6 @@ function solution(input) {
     //숫자인 경우 sort 주의
     ansArr[i].sort((a, b) => a - b);
   }
-  console.log(ansArr);
   let returnArr = [[], []];
   while (ansArr[0].length !== 0 || ansArr[1].length !== 0) {
     if (ansArr[0][0] === ansArr[1][0]) {
@@ -47,8 +46,9 @@ function solution(input) {
   }
 
   returnArr = returnArr.map((v, i) => (v.length === 0 ? 1 : v.reduce((add, a) => add * a)));
-  console.log(String(returnArr[0]));
-  console.log(String(returnArr[1]));
+  //Number로 제출
+  console.log(Number(returnArr[0]));
+  console.log(Number(returnArr[1]));
   //   console.log(ansArr.reduce((add, a) => `${add}\n` + `${a}`));
 }
 return solution(input);

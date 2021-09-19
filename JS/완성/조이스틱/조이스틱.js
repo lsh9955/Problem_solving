@@ -1,60 +1,71 @@
 function solution(name) {
-  const alphabet = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "O",
-    "P",
-    "Q",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
-  let givenNotA = name
-    .slice()
-    .split("")
-    .map((a) => (a === "A" ? 0 : 1));
-  let moveCount = [];
-  function findRoute(arr) {
-    for (let i = 0; i < 2; i++) {
-      if (i === 0) {
-      }
+  const nameArr = [];
+  let searchedIndex = 0;
+  let nowIndex = 0;
+  let countNum = 0;
+  for (let i = 0; i < name.length; i++) {
+    nameArr.push(Number(name.charCodeAt(i)) - 65);
+    if (Number(name.charCodeAt(i)) - 65 === 0) {
+      searchedIndex++;
     }
   }
 
-  let givenName = name.slice().split("");
-  let defalutName = Array(name.length)
-    .fill()
-    .map((v) => "A");
-  let nowCursorIndex = 0;
-  let nowAlphabetIndex = 0;
-  let nowClick = 0;
+  if (nameArr[0] !== 0) {
+    if (nameArr[0] - 13 <= 0) {
+      countNum = nameArr[0];
+    } else {
+      countNum = 26 - nameArr[0];
+    }
+    nameArr[0] = 0;
+    searchedIndex++;
+  }
 
-  const firCount =
-    alphabet.findIndex((e) => e === givenName[0]) >
-    alphabet.length - alphabet.findIndex((e) => e === givenName[0])
-      ? alphabet.length - alphabet.findIndex((e) => e === givenName[0])
-      : alphabet.findIndex((e) => e === givenName[0]);
+  while (searchedIndex !== nameArr.length) {
+    let goLeft = nowIndex;
+    let goRight = nowIndex;
+    let leftCount = 0;
+    let rightCount = 0;
+    while (nameArr[goLeft] === 0) {
+      if (goLeft === 0) {
+        goLeft = nameArr.length - 1;
+        leftCount++;
+      } else {
+        goLeft--;
+        leftCount++;
+      }
+    }
+    while (nameArr[goRight] === 0) {
+      if (goRight === nameArr.length - 1) {
+        goRight = 0;
+        rightCount++;
+      } else {
+        goRight++;
+        rightCount++;
+      }
+    }
+    if (rightCount <= leftCount) {
+      nowIndex = goRight;
+      searchedIndex++;
+      if (nameArr[nowIndex] - 13 <= 0) {
+        countNum += rightCount + nameArr[nowIndex];
+      } else {
+        countNum += rightCount + 26 - nameArr[nowIndex];
+      }
 
-  console.log(firCount);
-  var answer = 0;
-  return answer;
+      nameArr[nowIndex] = 0;
+    } else {
+      nowIndex = goLeft;
+      searchedIndex++;
+      if (nameArr[nowIndex] - 13 <= 0) {
+        countNum += leftCount + nameArr[nowIndex];
+      } else {
+        countNum += leftCount + 26 - nameArr[nowIndex];
+      }
+
+      nameArr[nowIndex] = 0;
+    }
+  }
+
+  return countNum;
 }
-document.write(solution("AEROEN"));
+document.write(solution("JEROEN"));

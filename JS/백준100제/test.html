@@ -8,37 +8,7 @@
   </head>
   <body>
     <script>
-      function solution(input) {
-        let ans;
-        if (Number(input) === 1) {
-          ans = 0;
-        } else if (Number(input) === 2) {
-          ans = 1;
-        } else {
-          let thisIndex = Number(input) - 2;
-
-          let find = 1;
-          let nowCount = 0;
-          while (thisIndex > 2) {
-            if (find * 2 + nowCount >= thisIndex) {
-              thisIndex = thisIndex - nowCount;
-              console.log(thisIndex);
-              find = 1;
-              nowCount = 0;
-            } else {
-              find = find * 2;
-              nowCount += find;
-            }
-          }
-          if (thisIndex === 1) {
-            ans = 1;
-          } else if (thisIndex === 2) {
-            ans = 0;
-          }
-        }
-
-        console.log(ans);
-      }
+      function solution(input) {}
       document.write(solution(5));
     </script>
   </body>

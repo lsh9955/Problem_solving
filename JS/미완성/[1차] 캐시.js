@@ -8,11 +8,11 @@ function solution(cacheSize, cities) {
       let thisWord = cities[i].toUpperCase();
       if (Object.keys(cacheDic).length < cacheSize) {
         if (cacheDic[thisWord] === undefined) {
-          cacheDic[thisWord] = 1;
+          cacheDic[thisWord] = i;
           time += 5;
         } else {
           time += 1;
-          cacheDic[thisWord] += 1;
+          cacheDic[thisWord] = i;
         }
       } else if (Object.keys(cacheDic).length === cacheSize) {
         if (cacheDic[thisWord] === undefined) {
@@ -24,11 +24,11 @@ function solution(cacheSize, cities) {
             }
           }
           delete cacheDic[a[0]];
-          cacheDic[thisWord] = 1;
+          cacheDic[thisWord] = i;
           time += 5;
         } else {
           time += 1;
-          cacheDic[thisWord] += 1;
+          cacheDic[thisWord] = i;
         }
       }
     }

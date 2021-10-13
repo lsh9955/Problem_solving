@@ -2,10 +2,6 @@ function solution(s) {
   let resultArr = Array(Math.floor(s.length / 2) + 1)
     .fill()
     .map((v, i) => []);
-  let resultNumArr = Array(Math.floor(s.length / 2) + 1)
-    .fill()
-    .map((v, i) => [0]);
-  let beforeIndex = "";
 
   for (let i = 1; i <= Math.floor(s.length / 2); i++) {
     let k = 0;
@@ -13,36 +9,21 @@ function solution(s) {
       if (k + i <= s.length - 1) {
         let p = s.slice(k, k + i);
 
-        if (p !== resultArr[i][resultArr[i].length - 1]) {
-          resultArr[i].push(p);
+        if ((resultArr[i][resultArr[i].length - 1] && p !== resultArr[i][resultArr[i].length - 1][0]) || !resultArr[i][resultArr[i].length - 1]) {
+          resultArr[i].push([p, 1]);
           k = k + i;
-        } else {
-          if (
-            (p !== resultArr[i][resultArr[i].length - 2] && p === resultArr[i][resultArr[i].length - 1] && resultArr[i].length >= 2) ||
-            (p === resultArr[i][resultArr[i].length - 1] && resultArr[i].length === 1)
-          ) {
-            resultNumArr[i].push(2);
-          } else if (p === resultArr[i][resultArr[i].length - 2] && p === resultArr[i][resultArr[i].length - 1]) {
-            resultNumArr[i][resultNumArr[i].length - 1]++;
-          }
+        } else if (p === resultArr[i][resultArr[i].length - 1][0]) {
+          resultArr[i][resultArr[i].length - 1][1]++;
 
           k = k + i;
         }
-        beforeIndex = p;
       } else if (k + i > s.length - 1) {
         let p = s.slice(k);
-        if (p !== resultArr[i][resultArr[i].length - 1]) {
-          resultArr[i].push(p);
+        if ((resultArr[i][resultArr[i].length - 1] && p !== resultArr[i][resultArr[i].length - 1][0]) || !resultArr[i][resultArr[i].length - 1]) {
+          resultArr[i].push([p, 1]);
           break;
-        } else {
-          if (
-            (p !== resultArr[i][resultArr[i].length - 2] && p === resultArr[i][resultArr[i].length - 1] && resultArr[i].length >= 2) ||
-            (p === resultArr[i][resultArr[i].length - 1] && resultArr[i].length === 1)
-          ) {
-            resultNumArr[i].push(2);
-          } else if (p === resultArr[i][resultArr[i].length - 2] && p === resultArr[i][resultArr[i].length - 1]) {
-            resultNumArr[i][resultNumArr[i].length - 1]++;
-          }
+        } else if (p === resultArr[i][resultArr[i].length - 1][0]) {
+          resultArr[i][resultArr[i].length - 1][1]++;
 
           break;
         }
@@ -50,16 +31,20 @@ function solution(s) {
     }
   }
   let minLength = 1000;
-  for (let i = 1; i <= Math.floor(s.length / 2); i++) {
-    let thisLength = 0;
-    for (let j = 0; j < resultArr[i].length; j++) {
-      thisLength += resultArr[i][j].length;
+  if (s.length === 1) {
+    minLength = 1;
+  } else {
+    for (let i = 1; i <= Math.floor(s.length / 2); i++) {
+      let thisLength = 0;
+      for (let j = 0; j < resultArr[i].length; j++) {
+        thisLength += resultArr[i][j][0].length;
+        thisLength += resultArr[i][j][1] === 1 ? 0 : String(resultArr[i][j][1]).length;
+      }
+
+      thisLength < minLength ? (minLength = thisLength) : "";
     }
-    resultNumArr[i][0] === 0 ? (thisLength += resultNumArr[i].length - 1) : (thisLength += resultNumArr[i].length);
-    thisLength < minLength ? (minLength = thisLength) : "";
   }
-  console.log(resultArr);
-  console.log(resultNumArr);
+
   return minLength;
 }
-document.write(solution("aabbaccc"));
+document.write(solution("aaaaaaaaaaaaaaaaaaaab"));
